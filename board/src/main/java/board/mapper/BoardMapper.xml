@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace ="gd.fintech.fileuploadtest.mapper.BoardMapper">
+  	<!-- 게시물 입력 -->
+  	<insert id="insertBoard" parameterType="board.vo.Board">
+	  <selectKey resultType="int" keyProperty="boardId" order="AFTER">
+	  	SELECT LAST_INSERT_ID()
+	  </selectKey>
+	  INSERT INTO board(
+			board_pw, 
+			board_title, 
+			board_content, 
+			board_user, 
+			board_date	
+	  ) Values (
+	  	#{boardPw},
+	  	#{boardTitle},
+	  	#{boardContent},
+	  	#{boardUser},
+	  	#{boardDate}
+	  )	  
+	 </insert>
+	 
+	<resultMap type="board.vo.Board" id="boardListResult">
+  			<result property="boardNo" column="board_no"/>
+  			<result property="boardTitle" column="board_title"/>
+  			<result property="boardContent" column="board_content"/>
+			<result property="boardUser" column="board_user"/>
+			<result property="boardDate" column="board_date"/>
+  	</resultMap>
+  	<!-- 게시물 목록 -->
+	<select id="boardList" resultType="board.vo.Board">
+		SELECT
+			board_no as boardNo,
+			board_title as boardTitle,
+			board_content as boardContent,
+			board_user as boardUser,
+			board_date as boardDate
+		FROM board
+		ORDER BY board_date
+		DESC LIMIT 0, 10
+	</select>
+	<!--페이징 -->
+	<select id="selectBoardListByPage" parameterType="java.util.Map" resultType="board.vo.Board">
+		SELECT
+			board_no boardNo,
+			board_title boardTitle,
+			board_content boardContent,
+			board_user boardUser,
+			board_date boardDate
+		FROM board
+		ORDER BY board_date DESC
+		LIMIT #{beginRow}, #{rowPerPage}
+	</select>
+	<!-- 게시물 삭제 -->
+	<delete id="deleteBoard" parameterType="int">
+		DELETE
+		FROM board
+		WHERE board_no = #{boardNo}
+	</delete>
+	<!-- 게시물 수정 -->
+	<update id="modifyBoard" parameterType="board.vo.Board">
+		UPDATE board
+		SET board_title = #{boardTitle},
+			board_content = #{boardContent},
+			board_user #{boardUser},
+			board_date = NOW()
+		WHERE board_no = #{boardNo}
+	</update>
+	<!-- 공지사항 상세보기 -->
+	<select id="selectBoardOne" resultMap="selectBoardOneResult">
+	 SELECT 
+	 		board_title, 
+	 		board_content, 
+	 		board_user, 
+	 		board_date 
+	 FROM board 
+	 WHERE board_no = #{noticeNo}
+	</select>
+	<!-- 게시물 갯수 -->
+	<select id="selectBoardCount" resultType="Integer">
+  		SELECT COUNT(*) FROM board
+	</select>
+	
+  </mapper>
