@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import board.mapper.*;
 import board.vo.Board;
+import board.vo.BoardForm;
 
 
 @Service
@@ -31,7 +32,7 @@ public class BoardService {
 	
 
 	public Map<String, Object> getBoardAndInOutList() { 
-		List<Board> boardList = boardMapper.boardList();
+		List<Board> boardList = boardMapper.selectboardList();
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("boardList", boardList);
@@ -40,27 +41,32 @@ public class BoardService {
 	}
 	
 	public List<Board> getBoardList(){
-		return boardMapper.boardList();
+		return boardMapper.selectboardList();
 	}
 	
-	public void addBoard(Board board) {
+	public void addBoard(BoardForm boardFrom) {
 		
 		Board board = new Board();
+		board.setBoardPw(board.getBoardPw());
 		board.setBoardTitle(board.getBoardTitle());
 		board.setBoardContent(board.getBoardContent());
+		board.setBoardUser(board.getBoardUser());
 		boardMapper.insertBoard(board); 
 		
 	}
+	
 	//삭제
 	public void removeBoard(int boardNo) {
 		boardMapper.deleteBoard(boardNo);
 	}
+	
 	//수정
-	public void modifyBoard(Board board) {
+	public void modifyBoard(BoardForm boardFrom) {
 		Board board = new Board();
 		board.setBoardNo(board.getBoardNo());
 		board.setBoardTitle(board.getBoardTitle());
 		board.setBoardContent(board.getBoardContent());
+		board.setBoardUser(board.getBoardUser());
 		boardMapper.modifyBoard(board);
 
 	}

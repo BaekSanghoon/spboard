@@ -31,7 +31,7 @@
 			<result property="boardDate" column="board_date"/>
   	</resultMap>
   	<!-- 게시물 목록 -->
-	<select id="boardList" resultType="board.vo.Board">
+	<select id="selectboardList" resultType="board.vo.Board">
 		SELECT
 			board_no as boardNo,
 			board_title as boardTitle,

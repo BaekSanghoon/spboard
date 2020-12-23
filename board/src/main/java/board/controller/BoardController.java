@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import board.service.BoardService;
-import board.vo.Board;
+import board.vo.*;
 
 @Controller
 public class BoardController {
@@ -48,8 +48,8 @@ public class BoardController {
 	}
 	// 게시판 입력 액션
 	@PostMapping("/admin/addBoard")
-	public String addBoard(Board board) {
-		boardService.addBoard(board);
+	public String addBoard(BoardForm boardForm) {
+		boardService.addBoard(boardForm);
 		return "redirect:/admin/boardList/1";
 	}
 	// 게시판 상세 보기
@@ -76,8 +76,8 @@ public class BoardController {
 	
 	// 게시판 수정 액션
 	@PostMapping("/admin/modifyBoard")
-	public String modifyBoard(Board board) {
-		boardService.modifyBoard(board);
+	public String modifyBoard(BoardForm boardForm) {
+		boardService.modifyBoard(boardForm);
 		return "redirect:/admin/boardList/1";
 	}
 }

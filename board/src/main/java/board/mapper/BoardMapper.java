@@ -13,7 +13,7 @@ public interface BoardMapper {
 	int insertBoard(Board board);
 	
 	//게시물 목록
-	List<Board> boardList(Map<String,Object> map);
+	List<Board> selectboardList();
 	
 	// 페이징
 	List<Board> selectBoardListByPage(Map<String, Integer> map);
@@ -29,5 +29,7 @@ public interface BoardMapper {
 	
 	//게시물 갯수
 	int selectBoardCount();
+
+	
 
 }
