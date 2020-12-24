@@ -30,6 +30,7 @@
 			<result property="boardUser" column="board_user"/>
 			<result property="boardDate" column="board_date"/>
   	</resultMap>
+  	
   	<!-- 게시물 목록 -->
 	<select id="selectboardList" resultType="board.vo.Board">
 		SELECT

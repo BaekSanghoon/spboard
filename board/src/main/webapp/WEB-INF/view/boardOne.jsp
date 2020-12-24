@@ -24,7 +24,7 @@
 				<tr><td>board_date : ${board.boardDate}</td></tr>
 		 </table>	
 		 	<a type="button" class="btn btn-outline-info" href="${pageContext.request.contextPath}/admin/modifyboard/${board.boardNo}">수정</a>
-		 	<a type="button" class="btn btn-outline-danger" href="${pageContext.request.contextPath}/admin/removeBoard/${board.boardNo}">삭제</a>
+		 	<a type="button" class="btn btn-outline-danger" href="${pageContext.request.contextPath}/admin/boardRemove">삭제</a>
 		 	<a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/admin/boardList/1">글목록</a>
 </body>
 </html>
