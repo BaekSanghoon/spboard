@@ -28,7 +28,7 @@
 		<tbody>
 			<c:forEach var="b" items="${boardList}">
             <tr>
-                <td><a href="${pageContext.request.contextPath}/admin/boardOne/${b.boardNo}">${b.boardTitle}</a></td>
+                <td><a href="${pageContext.request.contextPath}/boardOne/${b.boardNo}">${b.boardTitle}</a></td>
                     <td>${b.boardUser}</td>
                     <td>${b.boardDate}</td>
             </tr>
@@ -36,16 +36,16 @@
 		</tbody>
 	</table>
 	<div>
-		<a type="button" class="btn btn-outline-secondary" href="${pageContext.request.contextPath}/admin/addBoard" style="float: right;">게시글 입력</a>		
+		<a type="button" class="btn btn-outline-secondary" href="${pageContext.request.contextPath}/addBoard" style="float: right;">게시글 입력</a>		
 	</div>
 
 	    <!-- 현재 페이지가 마지막 페이지보다 작으면 다음페이지 링크를 추가 -->
         <c:if test="${currentPage > 1}">
-            <a type="button" class="btn btn-outline-info" href="${pageContext.request.contextPath}/admin/boardList/${currentPage-1}">이전</a>
+            <a type="button" class="btn btn-outline-info" href="${pageContext.request.contextPath}/boardList/${currentPage-1}">이전</a>
         </c:if>
         <!-- 현재 페이지가 1페이지보다 크면 이전페이지 링크를 추가 -->
         <c:if test="${currentPage < lastPage}">
-            <a type="button" class="btn btn-outline-info" href="${pageContext.request.contextPath}/admin/boardList/${currentPage+1}">다음</a>
+            <a type="button" class="btn btn-outline-info" href="${pageContext.request.contextPath}/boardList/${currentPage+1}">다음</a>
         </c:if>
 
 

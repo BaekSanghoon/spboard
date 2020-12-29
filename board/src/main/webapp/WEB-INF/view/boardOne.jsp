@@ -23,8 +23,8 @@
 				<tr><td>board_user : ${board.boardUser}</td></tr>
 				<tr><td>board_date : ${board.boardDate}</td></tr>
 		 </table>	
-		 	<a type="button" class="btn btn-outline-info" href="${pageContext.request.contextPath}/admin/modifyboard/${board.boardNo}">수정</a>
-		 	<a type="button" class="btn btn-outline-danger" href="${pageContext.request.contextPath}/admin/boardRemove">삭제</a>
-		 	<a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/admin/boardList/1">글목록</a>
+		 	<a type="button" class="btn btn-outline-info" href="${pageContext.request.contextPath}/modifyboard/${board.boardNo}">수정</a>
+		 	<a type="button" class="btn btn-outline-danger" href="${pageContext.request.contextPath}/boardRemove">삭제</a>
+		 	<a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/boardList/1">글목록</a>
 </body>
 </html>

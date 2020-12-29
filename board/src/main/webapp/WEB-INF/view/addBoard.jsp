@@ -40,7 +40,7 @@
 <body>
 	<div class="container">
 		<h1>게시판 글입력</h1>		
-		<form action="${pageContext.request.contextPath}/admin/addBoard" method="post">
+		<form action="${pageContext.request.contextPath}/addBoard" method="post">
 		<div class="table-active" > 게시글 작성자 이름 </div>
 		<div class="table-active"><input name="boardUser" id="boardUser" type="text"/></div>
 		<div class="table-light">게시글 암호</div>
@@ -52,7 +52,7 @@
 		<div class="table-active">
             <input class="btn btn-outline-success"  type="submit" id="addButton" value="글입력"/>
             <input class="btn btn-outline-warning" type="reset" value="초기화"/>
-            <a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/admin/noticeList/1">글목록</a>
+            <a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/noticeList/1">글목록</a>
         </div>
 
 		</form>

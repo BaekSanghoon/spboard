@@ -17,7 +17,6 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	// 공지 목록
-	@GetMapping("/admin/boardList/{currentPage}")
 	public String boardList(Model model, @PathVariable(value = "") int currentPage){
 		int rowPerPage = 10;
 		
@@ -42,31 +41,31 @@ public class BoardController {
 		return "boardList";
 	}
 	// 게시판 입력 폼
-	@GetMapping("/admin/addBoard")
+	@GetMapping("/addBoard")
 	public String addBoard() {
 		return "addBoard";
 	}
 	// 게시판 입력 액션
-	@PostMapping("/admin/addBoard")
+	@PostMapping("/addBoard")
 	public String addBoard(BoardForm boardForm) {
 		boardService.addBoard(boardForm);
-		return "redirect:/admin/boardList/1";
+		return "redirect:/boardList/1";
 	}
 	// 게시판 상세 보기
-	@GetMapping("/admin/boardOne/{boardNo}")
+	@GetMapping("/boardOne/{boardNo}")
 	public String boardOne(Model model, @PathVariable(value = "boardNo") int boardNo) {
 		Board board = boardService.getBoardOne(boardNo);
 		model.addAttribute("board", board);
 		return "boardOne";
 	}
 	// 게시판 삭제
-	@GetMapping("/admin/removeBoard/{boardNo}")
+	@GetMapping("/removeBoard/{boardNo}")
 	public String removeBoard(@PathVariable(value = "boardNo") int boardNo) {
 		boardService.removeBoard(boardNo);
-		return "redirect:/admin/boardList/1";
+		return "redirect:/boardList/1";
 	}
 	// 게시판 수정 
-	@GetMapping("/admin/modifyBoard/{boardNo}")
+	@GetMapping("/modifyBoard/{boardNo}")
 	public String modifyBoard(Model model, @PathVariable(value = "boardNo") int boardNo) {
 		Board board =boardService.getBoardOne(boardNo);
 		model.addAttribute("board", board);
@@ -75,9 +74,9 @@ public class BoardController {
 	}
 	
 	// 게시판 수정 액션
-	@PostMapping("/admin/modifyBoard")
+	@PostMapping("/modifyBoard")
 	public String modifyBoard(BoardForm boardForm) {
 		boardService.modifyBoard(boardForm);
-		return "redirect:/admin/boardList/1";
+		return "redirect:/boardList/1";
 	}
 }

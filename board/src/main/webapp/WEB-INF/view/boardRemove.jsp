@@ -28,16 +28,16 @@
 <body>
 <div class="container">
     <c:if test="${board.boardNo == null}"> <!-- no값이 없으면 리스트로 이동 -->
-        <c:redirect url="/admin/boardList/1"/> 
+        <c:redirect url="/boardList/1"/> 
     </c:if>
     
     <c:if test="${param.boardNo != null}">		
 		<h1>게시글 삭제 비밀번호 확인</h1>
-			<form action="${pageContext.request.contextPath}/admin/boardRemove" method="post">
+			<form action="${pageContext.request.contextPath}/boardRemove" method="post">
 				<div>게시글 번호 : <input name="boardNo" value="${board.boardNo}" readonly/></div>
 				<div>비밀번호 :  <input name="boardPw" type="password"></div>
 				<div>
-					<a class="btn btn-outline-danger" type="button" href="${pageContext.request.contextPath}/admin/removeBoard/${board.boardNo}">삭제</a>
+					<a class="btn btn-outline-danger" type="button" href="${pageContext.request.contextPath}/removeBoard/${board.boardNo}">삭제</a>
 					<input class="btn btn-outline-warning"type="reset" value="초기화"/>
 				</div>
 			</form>
