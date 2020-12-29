@@ -2,12 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace ="board.mapper.BoardMapper">
+ <mapper namespace ="board.mapper.BoardMapper">
   	<!-- 게시물 입력 -->
   	<insert id="insertBoard" parameterType="board.vo.Board">
-	  <selectKey resultType="int" keyProperty="boardId" order="AFTER">
-	  	SELECT LAST_INSERT_ID()
-	  </selectKey>
 	  INSERT INTO board(
 			board_pw, 
 			board_title, 
@@ -73,10 +70,10 @@
 	<!-- 공지사항 상세보기 -->
 	<select id="selectBoardOne" resultMap="selectBoardOneResult">
 	 SELECT 
-	 		board_title, 
-	 		board_content, 
-	 		board_user, 
-	 		board_date 
+	 		board_title as boardTitle, 
+	 		board_content as boardContent, 
+	 		board_user as boardUser, 
+	 		board_date as boardDate
 	 FROM board 
 	 WHERE board_no = #{noticeNo}
 	</select>

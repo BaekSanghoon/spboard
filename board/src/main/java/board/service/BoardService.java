@@ -68,11 +68,12 @@ public class BoardService {
 		boardMapper.modifyBoard(board);
 
 	}
-
+	//수정페이지
 	public Board getBoardOne(int boardNo) {
 		Board board = boardMapper.selectBoardOne(boardNo);
 		return board;
 	}
+	//페이지 수
 	public int getCountBoard() {
 		return boardMapper.selectBoardCount();
 	}

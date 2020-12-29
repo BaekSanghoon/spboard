@@ -45,7 +45,7 @@
         </c:if>
         <!-- 현재 페이지가 1페이지보다 크면 이전페이지 링크를 추가 -->
         <c:if test="${currentPage < lastPage}">
-            <a type="button" class="btn btn-outline-info" href="${pageContext.request.contextPath}/admin/noticeList/${currentPage+1}">다음</a>
+            <a type="button" class="btn btn-outline-info" href="${pageContext.request.contextPath}/admin/boardList/${currentPage+1}">다음</a>
         </c:if>
 
 
